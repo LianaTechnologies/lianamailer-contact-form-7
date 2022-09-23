@@ -1,4 +1,4 @@
-LianaMailer Contact Form 7 - Marketing Automation for WordPress
+LianaMailer Contact Form 7 - LianaMailer integration for Contact Form 7 WordPress -plugin
 
 Copyright 2021, 2022 by Liana Technologies Oy.
 
