@@ -6,7 +6,7 @@
  * Version:           1.0.51
  * Requires at least: 5.2
  * Requires PHP:      7.4
- * Author:            Liana Technologies
+ * Author:            Liana Technologies Oy
  * Author URI:        https://www.lianatech.com
  * License:           GPL-3.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-3.0-standalone.html
@@ -31,7 +31,6 @@ function load_plugin() {
 	// if Contact Form 7 is installed (and active?)
 	if ( defined( 'WPCF7_VERSION' ) ) {
 
-		// TODO: Autoloader?
 		require_once dirname(__FILE__) . '/includes/Mailer/Rest.php';
 		require_once dirname(__FILE__) . '/includes/Mailer/LianaMailerConnection.php';
 

@@ -135,9 +135,6 @@ class LianaMailerPlugin {
 			}
 		}
 
-		if(!empty($failure_reason)) {
-			error_log(__CLASS__.'::'.__FUNCTION__.' ERROR: '.$failure_reason);
-		}
 		return;
 	}
 

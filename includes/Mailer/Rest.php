@@ -24,12 +24,6 @@ class Rest {
 		return $this->api_version;
 	}
 
-	/*
-	public static function settingsEnabled() {
-		return ! empty(\Conf::getSetting('mailer_settings', \Conf::$site, \Conf::$language));
-	}
-	*/
-
 	public function __construct($api_user, $api_key, $api_realm = 'PV', $api_url = 'https://rest.lianamailer.com', $api_version = null) {
 		$this->api_user = $api_user;
 		$this->api_key = $api_key;
@@ -58,8 +52,7 @@ class Rest {
 	protected function request($method, $args = array()) {
 		$contents = json_encode($args);
 		$md5 = md5($contents);
-		//$datetime = new \DateTime(null, new \DateTimeZone(!is_null(DEFAULT_TIMEZONE) ? DEFAULT_TIMEZONE : 'Europe/Helsinki'));
-		// TODO: Do we need to support timezones?
+
 		$datetime = new \DateTime(null, new \DateTimeZone('Europe/Helsinki'));
 		$timestamp = $datetime->format('c');
 		$type = 'POST';
