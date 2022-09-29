@@ -171,7 +171,7 @@ class LianaMailerConnection {
 	public function reactivate_recipient( $email, $auto_confirm ) {
 
 		try {
-			$data = array(
+			$data         = array(
 				$email,
 				'User',
 				'Recipient filled out a form on website.',
@@ -255,9 +255,7 @@ class LianaMailerConnection {
 		);
 
 		try {
-			if ( $this->rest->call( 'addMemberConsent', array_values( $args ) ) ) {
-
-			}
+			$this->rest->call( 'addMemberConsent', array_values( $args ) );
 		} catch ( \Exception $e ) {
 			return;
 		}
@@ -275,9 +273,7 @@ class LianaMailerConnection {
 			$domain,
 		);
 		try {
-			if ( $this->rest->call( 'sendWelcomeMail', $args ) ) {
-
-			}
+			$this->rest->call( 'sendWelcomeMail', $args );
 		} catch ( \Exception $e ) {
 			return;
 		}
