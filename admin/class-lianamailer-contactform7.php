@@ -4,8 +4,7 @@
  *
  * PHP Version 7.4
  *
- * @category Components
- * @package  WordPress
+ * @package  LianaMailer
  * @author   Liana Technologies <websites@lianatech.com>
  * @license  GPL-3.0-or-later https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * @link     https://www.lianatech.com
@@ -16,8 +15,7 @@ namespace CF7_LianaMailer;
 /**
  * LianaMailer / Contact Form 7 options panel class
  *
- * @category Components
- * @package  WordPress
+ * @package  LianaMailer
  * @author   Liana Technologies <websites@lianatech.com>
  * @license  GPL-3.0-or-later https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * @link     https://www.lianatech.com

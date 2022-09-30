@@ -1,8 +1,7 @@
 /**
  * LianaMailer / Contact Form 7 JavaScript functionality
  *
- * @category Components
- * @package  WordPress
+ * @package  LianaMailer
  * @author   Liana Technologies <websites@lianatech.com>
  * @license  GPL-3.0-or-later https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * @link     https://www.lianatech.com
