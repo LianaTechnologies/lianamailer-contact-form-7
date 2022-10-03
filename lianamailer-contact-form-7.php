@@ -26,7 +26,6 @@ define( 'LMCF7_VERSION', '1.0.51' );
 
 add_action( 'plugins_loaded', '\CF7_LianaMailer\load_plugin', 10, 0 );
 
-
 /**
  * Loads LianaMailer - Contact Form 7 plugin
  *

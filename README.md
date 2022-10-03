@@ -1,6 +1,6 @@
 # LianaMailer integration plugin for Contact Form 7
 
-This plugin provides necessary functions to integrate Contact Form 7 with LianaMailer.
+This plugin provides necessary functions to integrate Contact Form 7 with the LianaMailer email marketing tool.
 
 # Information for Developers:
 
