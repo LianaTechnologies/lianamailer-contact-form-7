@@ -1,7 +1,6 @@
 <?php
 /**
  * Plugin Name:       LianaMailer - Contact Form 7
- * Plugin URI:        https://www.lianatech.com/solutions/websites
  * Description:       LianaMailer for Contact Form 7.
  * Version:           1.0.51
  * Requires at least: 5.2
