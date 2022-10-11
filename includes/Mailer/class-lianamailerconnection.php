@@ -55,12 +55,31 @@ class LianaMailerConnection {
 	 */
 	public function __construct() {
 
-		$liana_mailer_settings = get_option( 'lianamailer_contactform7_options' );
-		$this->rest            = new Rest(
-			$liana_mailer_settings['lianamailer_userid'],
-			$liana_mailer_settings['lianamailer_secret_key'],
-			$liana_mailer_settings['lianamailer_realm'],
-			$liana_mailer_settings['lianamailer_url']
+		$lianamailer_settings = get_option( 'lianamailer_contactform7_options' );
+
+		$user_id    = null;
+		$secret_key = null;
+		$realm      = null;
+		$url        = null;
+
+		if ( ! empty( $lianamailer_settings['lianamailer_userid'] ) ) {
+			$user_id = $lianamailer_settings['lianamailer_userid'];
+		}
+		if ( ! empty( $lianamailer_settings['lianamailer_secret_key'] ) ) {
+			$secret_key = $lianamailer_settings['lianamailer_secret_key'];
+		}
+		if ( ! empty( $lianamailer_settings['lianamailer_realm'] ) ) {
+			$realm = $lianamailer_settings['lianamailer_realm'];
+		}
+		if ( ! empty( $lianamailer_settings['lianamailer_url'] ) ) {
+			$url = $lianamailer_settings['lianamailer_url'];
+		}
+
+		$this->rest = new Rest(
+			$user_id,
+			$secret_key,
+			$realm,
+			$url
 		);
 	}
 
@@ -83,13 +102,19 @@ class LianaMailerConnection {
 			$account_sites = $this->rest->call(
 				'sites',
 				array(
-					'properties'    => true,
-					'lists'         => true,
-					'layout'        => false,
-					'marketing'     => false,
-					'parents'       => false,
-					'children'      => false,
-					'authorization' => false,
+					array(
+						'properties'    => true,
+						'lists'         => true,
+						'layout'        => false,
+						'marketing'     => false,
+						'parents'       => false,
+						'children'      => false,
+						'authorization' => false,
+					),
+					// If account does not have multiple list subscription enabled, this ensures default list is returned.
+					array(
+						'all_lists' => true,
+					),
 				)
 			);
 		} catch ( \Exception $e ) {
@@ -189,13 +214,22 @@ class LianaMailerConnection {
 	 * Add new recipient to mailinglist or update existing one. email and SMS are used to find existing recipient, one of these must be given.
 	 * Ref: https://rest.lianamailer.com/docs/#operation/v1-post-createAndJoinRecipient
 	 *
+	 * @param array   $recipient Existing recipient data.
 	 * @param string  $email Submitters email.
 	 * @param string  $sms Submitters SMS.
 	 * @param string  $list_id LianaMailer list id.
 	 * @param boolean $auto_confirm true if LianaMailer site is not using welcome mail functionality.
 	 */
-	public function create_and_join_recipient( $email, $sms, $list_id, $auto_confirm ) {
+	public function create_and_join_recipient( $recipient, $email, $sms, $list_id, $auto_confirm ) {
 		try {
+			// If email was not mapped, use recipient existing email address.
+			if ( empty( $email ) && isset( $recipient['recipient']['email'] ) & ! empty( $recipient['recipient']['email'] ) ) {
+				$email = $recipient['recipient']['email'];
+			}
+			// If sms was not mapped, use recipient existing sms.
+			if ( empty( $sms ) && isset( $recipient['recipient']['sms'] ) && ! empty( $recipient['recipient']['sms'] ) ) {
+				$sms = $recipient['recipient']['sms'];
+			}
 			settype( $list_id, 'array' );
 			$data = array(
 				null,
@@ -292,7 +326,7 @@ class LianaMailerConnection {
 	 * Get all properties from LianaMailer account
 	 * Ref: https://rest.lianamailer.com/docs/#operation/v1-post-getCustomerProperties
 	 */
-	public function get_liana_mailer_properties() {
+	public function get_lianamailer_properties() {
 		$fields = array();
 		try {
 			$fields = $this->rest->call( 'getCustomerProperties' );
@@ -306,7 +340,7 @@ class LianaMailerConnection {
 	 * Get LianaMailer customer settings
 	 * Ref: https://rest.lianamailer.com/docs/#operation/v1-post-getCustomer
 	 */
-	public function get_liana_mailer_customer() {
+	public function get_lianamailer_customer() {
 		$customer = array();
 		try {
 			$customer = $this->rest->call( 'getCustomer' );
