@@ -1,4 +1,4 @@
-=== LianaMailer Contact Form 7 ===
+=== LianaMailer for Contact Form 7 ===
 Contributors: lianatechnologies, jaakkoperoliana, timopohjanvirtaliana
 Tags: newsletter, automation
 Requires at least: 5.8
