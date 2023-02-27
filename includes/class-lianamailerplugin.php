@@ -253,8 +253,8 @@ class LianaMailerPlugin {
 						'name'         => str_replace( array( 'ä', 'ö', 'å' ), array( 'a', 'o', 'o' ), $field['name'] ) . '_' . $field['handle'],
 						'handle'       => $field['handle'],
 						'visible_name' => $field['name'],
-						'required'     => $field['required'],
-						'type'         => $field['type'],
+						'required'     => ($field['required'] ?? false),
+						'type'         => ($field['type'] ?? 'text'),
 					);
 				},
 				$properties

@@ -179,7 +179,7 @@ class Rest {
 			return $result['result'];
 		}
 
-		return false;
+		return [];
 	}
 
 }
