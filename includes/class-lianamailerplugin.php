@@ -202,7 +202,7 @@ class LianaMailerPlugin {
 			}
 
 			// Checkboxes, choices and selects are in array, implode selected values as string.
-			if ( is_array( $this->post_data[ 'LM_' . $property_name ]) ) {
+			if ( is_array( $this->post_data[ 'LM_' . $property_name ] ) ) {
 				$this->post_data[ 'LM_' . $property_name ] = implode( ', ', $this->post_data[ 'LM_' . $property_name ] );
 			}
 
@@ -256,11 +256,11 @@ class LianaMailerPlugin {
 						 *   return preg_match( '/^[A-Za-z][-A-Za-z0-9_:.]*$/', $string );
 						 * }
 						 */
-						'name'         => str_replace( array( 'ä', 'ö', 'å' ,' '), array( 'a', 'o', 'o' ,'_'), $field['name'] ) . '_' . $field['handle'],
+						'name'         => str_replace( array( 'ä', 'ö', 'å', ' ' ), array( 'a', 'o', 'o', '_' ), $field['name'] ) . '_' . $field['handle'],
 						'handle'       => $field['handle'],
 						'visible_name' => $field['name'],
-						'required'     => ($field['required'] ?? false),
-						'type'         => ($field['type'] ?? 'text'),
+						'required'     => ( $field['required'] ?? false ),
+						'type'         => ( $field['type'] ?? 'text' ),
 					);
 				},
 				$properties
