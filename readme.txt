@@ -4,7 +4,7 @@ Tags: newsletter, automation
 Requires at least: 5.8
 Tested up to: 6.1
 Requires PHP: 7.4
-Stable tag: 1.0.53
+Stable tag: 1.0.54
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -41,6 +41,10 @@ Yes, you can! Join in on our [GitHub repository](https://github.com/LianaTechnol
 REST API documentation of LianaMailer product is available at [our support site](https://support.lianatech.com/lianamailer/settings/rest-api.html).
 
 == Changelog ==
+
+= 1.0.54 2023-03-23 =
+* **Fixed:** Replacing spaces to underline on LianaMailer property names.
+* **Changed:** Support for checkbox, radio and select inputs to map into  LianaMailer.
 
 = 1.0.53 2023-02-27 =
 * **Fixed:** AJAX calls returns array instead of possibility to false.

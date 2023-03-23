@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       LianaMailer for Contact Form 7
  * Description:       LianaMailer for Contact Form 7.
- * Version:           1.0.53
+ * Version:           1.0.54
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Liana Technologies Oy
@@ -21,7 +21,7 @@
 
 namespace CF7_LianaMailer;
 
-define( 'LMCF7_VERSION', '1.0.53' );
+define( 'LMCF7_VERSION', '1.0.54' );
 
 add_action( 'plugins_loaded', '\CF7_LianaMailer\load_plugin', 10, 0 );
 
