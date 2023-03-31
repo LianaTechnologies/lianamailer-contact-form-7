@@ -2,7 +2,7 @@
 Contributors: lianatechnologies, jaakkoperoliana, timopohjanvirtaliana
 Tags: newsletter, automation
 Requires at least: 5.8
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 7.4
 Stable tag: 1.0.54
 License: GPL-3.0-or-later
@@ -20,7 +20,7 @@ LianaMailer for Contact Form 7 plugin is developed and supported by Liana Techno
 
 = Where can I find LianaMailer documentation and user guides? =
 
-For help setting up and configuring Liana Mailer, please refer to [LianaMailer support site](https://support.lianatech.com/lianamailer.html).
+For help setting up and configuring Liana Mailer, please refer to [LianaMailer support site](https://support.lianatech.com/hc/en-us/categories/4409288848529-LianaMailer).
 
 = Where can I report bugs? =
 
@@ -38,16 +38,15 @@ Yes, you can! Join in on our [GitHub repository](https://github.com/LianaTechnol
 
 = Where can I find REST API documentation? =
 
-REST API documentation of LianaMailer product is available at [our support site](https://support.lianatech.com/lianamailer/settings/rest-api.html).
+REST API documentation of LianaMailer product is available at [our support site](https://support.lianatech.com/hc/en-us/articles/5339910408989-LianaMailer-REST-API).
 
 == Changelog ==
 
-= 1.0.54 2023-03-23 =
+= 1.0.6 2023-03-31 =
 * **Fixed:** Replacing spaces to underline on LianaMailer property names.
-* **Changed:** Support for checkbox, radio and select inputs to map into  LianaMailer.
-
-= 1.0.53 2023-02-27 =
 * **Fixed:** AJAX calls returns array instead of possibility to false.
+* **Changed:** Support for checkbox, radio and select inputs to map into LianaMailer.
+* **Support** For WordPress 6.2
 
 = 1.0.52 2022-10-10 =
 * **Fixed:** Fetch mailing list properly from LianaMailer when "multiple lists" was not enabled.
