@@ -54,9 +54,10 @@ REST API documentation of LianaMailer product is available at [our support site]
 
 == Changelog ==
 
-= 1.0.60 2024-09-16 =
+= 1.0.60 2024-09-17 =
 * **Fixed:** Fixed logic related to welcome emails to mimic LianaMailer
 * **Fixed:** Passing 'now' instead of null (deprecated) as first param for DateTime
+* **Fixed:** Don't list replaced/redirected LianaMailer sites
 * **Support:** Tested to be working with WordPress 6.6.2
 
 = 1.0.6 2023-03-31 =

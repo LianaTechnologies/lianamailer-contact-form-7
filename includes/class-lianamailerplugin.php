@@ -541,11 +541,13 @@ class LianaMailerPlugin {
 	 * @param string $selected_site selected site domain.
 	 */
 	private function print_site_selection( $sites, $selected_site ) {
-
-		$html      = '<h3>Choose LianaMailer site</h3>';
-		$html     .= '<select name="lianamailer_plugin_account_sites">';
-			$html .= '<option value="">Choose</option>';
+		$html = '<h3>Choose LianaMailer site</h3>';
+		$html .= '<select name="lianamailer_plugin_account_sites">';
+		$html .= '<option value="">Choose</option>';
 		foreach ( $sites as $site ) {
+			if ( $site['redirect'] || $site['replaced_by'] ) {
+				continue;
+			}
 			$html .= '<option value="' . $site['domain'] . '"' . ( $site['domain'] === $selected_site ? ' selected="selected"' : '' ) . '>' . $site['domain'] . '</option>';
 		}
 		$html .= '</select>';
