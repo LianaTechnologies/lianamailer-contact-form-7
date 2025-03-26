@@ -83,6 +83,10 @@ class LianaMailerPlugin {
 	 * @return void
 	 */
 	public function do_newsletter_subscription( $cf7_instance, $result ):void {
+		// Prevent handling of spam or other rejected submissions.
+		if ( ! isset( $result['status'] ) || ( 'mail_sent' !== $result['status'] ) ) {
+			return;
+		}
 
 		$submission        = \WPCF7_Submission::get_instance();
 		$is_plugin_enabled = (bool) get_post_meta( $cf7_instance->id(), 'lianamailer_plugin_enabled', true );
@@ -718,7 +722,7 @@ class LianaMailerPlugin {
 			}
 		}
 
-		if ( strpos( $settings_str, 'acceptance_as_validation' ) === false ) {
+		if ( ! $settings_str || strpos( $settings_str, 'acceptance_as_validation' ) === false ) {
 			if ( ! empty( $settings_str ) ) {
 				$settings_str .= PHP_EOL;
 			}
