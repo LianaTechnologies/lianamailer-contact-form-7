@@ -240,8 +240,9 @@ class LianaMailerPlugin {
 				'required'     => true,
 				'type'         => 'text',
 			);
+
 			// Use SMS -field only if LianaMailer account has it enabled.
-			if ( isset( $customer_settings['sms'] ) && '1' === $customer_settings['sms'] ) {
+			if ( isset( $customer_settings['sms'] ) && $customer_settings['sms'] ) {
 				$fields[] = array(
 					'name'         => 'sms',
 					'visible_name' => 'sms',
