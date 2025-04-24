@@ -54,7 +54,10 @@ REST API documentation of LianaMailer product is available at [our support site]
 
 == Changelog ==
 
-= 1.0.61 2025-26-03 =
+= 1.0.62 2025-04-24 =
+* **Fixed:** LianaMailer SMS field was not enabled although active in LianaMailer
+
+= 1.0.61 2025-03-26 =
 * **Fixed:** Don't handle spam and other failed messages anymore
 * **Support:** WP 6.7 supported
 
