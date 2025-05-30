@@ -1,10 +1,10 @@
 === LianaMailer for Contact Form 7 ===
-Contributors: lianatechnologies, jaakkoperoliana, timopohjanvirtaliana
+Contributors: lianatechnologies, jaakkoperoliana, timopohjanvirtaliana, samisiuvatti
 Tags: newsletter, automation
 Requires at least: 5.8
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.62
+Stable tag: 1.0.63
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -53,6 +53,9 @@ Yes, you can! Join in on our [GitHub repository](https://github.com/LianaTechnol
 REST API documentation of LianaMailer product is available at [our support site](https://support.lianatech.com/hc/en-us/articles/5339910408989-LianaMailer-REST-API).
 
 == Changelog ==
+
+= 1.0.63 2025-05-30 =
+* **Changed:** Send subscriber's IP to LianaMailer
 
 = 1.0.62 2025-04-24 =
 * **Fixed:** LianaMailer SMS field was not enabled although active in LianaMailer

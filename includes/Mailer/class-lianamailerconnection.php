@@ -192,18 +192,20 @@ class LianaMailerConnection {
 	 *
 	 * @param string  $email Submitters email.
 	 * @param boolean $auto_confirm true if LianaMailer site is not using welcome mail functionality.
+	 * @param string  $user_ip User IP address.
 	 */
-	public function reactivate_recipient( $email, $auto_confirm ) {
+	public function reactivate_recipient( $email, $auto_confirm, $user_ip = '' ) {
 
 		try {
-			$data         = array(
+			$data = array(
 				$email,
 				'User',
-				'Recipient filled out a form on website.',
+				'Via WordPress from IP '. $user_ip, // Reason.
 				$auto_confirm,
 				null,
 				esc_url( home_url( $this->get_wordpress_request() ) ),
 			);
+
 			$recipient_id = $this->rest->call( 'reactivateRecipient', $data );
 		} catch ( \Exception $e ) {
 			return;
@@ -219,8 +221,9 @@ class LianaMailerConnection {
 	 * @param string  $sms Submitters SMS.
 	 * @param string  $list_id LianaMailer list id.
 	 * @param boolean $auto_confirm true if LianaMailer site is not using welcome mail functionality.
+	 * @param string  $user_ip User IP address.
 	 */
-	public function create_and_join_recipient( $recipient, $email, $sms, $list_id, $auto_confirm ) {
+	public function create_and_join_recipient( $recipient, $email, $sms, $list_id, $auto_confirm, $user_ip = '' ) {
 		try {
 			// If email was not mapped, use recipient existing email address.
 			if ( empty( $email ) && isset( $recipient['recipient']['email'] ) & ! empty( $recipient['recipient']['email'] ) ) {
@@ -237,7 +240,7 @@ class LianaMailerConnection {
 				$sms,
 				$this->recipient_properties,
 				$auto_confirm,
-				'Recipient filled out a form on website.',
+				'Via WordPress from IP ' . $user_ip, // Reason.
 				esc_url( home_url( $this->get_wordpress_request() ) ),
 				$list_id,
 			);
