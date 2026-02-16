@@ -2,9 +2,9 @@
 /**
  * Plugin Name:       LianaMailer for Contact Form 7
  * Description:       LianaMailer for Contact Form 7.
- * Version:           1.0.63
- * Requires at least: 5.2
- * Requires PHP:      7.4
+ * Version:           1.0.64
+ * Requires at least: 6.5
+ * Requires PHP:      8.0
  * Author:            Liana Technologies Oy
  * Author URI:        https://www.lianatech.com
  * License:           GPL-3.0-or-later
@@ -12,7 +12,7 @@
  * Text Domain:       lianamailer-contact-form-7
  * Domain Path:       /languages
  *
- * PHP Version 7.4
+ * PHP Version 8.0
  *
  * @package  LianaMailer
  * @license  https://www.gnu.org/licenses/gpl-3.0-standalone.html GPL-3.0-or-later
@@ -21,7 +21,7 @@
 
 namespace CF7_LianaMailer;
 
-define( 'LMCF7_VERSION', '1.0.63' );
+define( 'LMCF7_VERSION', '1.0.64' );
 
 add_action( 'plugins_loaded', '\CF7_LianaMailer\load_plugin', 10, 0 );
 
@@ -33,6 +33,12 @@ add_action( 'plugins_loaded', '\CF7_LianaMailer\load_plugin', 10, 0 );
 function load_plugin():void {
 	// if Contact Form 7 is installed (and active?).
 	if ( defined( 'WPCF7_VERSION' ) ) {
+
+		if ( \is_admin() ) {
+			// Load admin notices.
+			require_once dirname( __FILE__ ) . '/admin/class-admin-notices.php';
+			new Admin_Notices();
+		}
 
 		require_once dirname( __FILE__ ) . '/includes/Mailer/class-rest.php';
 		require_once dirname( __FILE__ ) . '/includes/Mailer/class-lianamailerconnection.php';
