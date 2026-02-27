@@ -4,7 +4,7 @@ Tags: newsletter, automation
 Requires at least: 6.5
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 1.0.64
+Stable tag: 1.0.65
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -61,6 +61,9 @@ Yes, you can! Join in on our [GitHub repository](https://github.com/LianaTechnol
 REST API documentation of LianaMailer product is available at [our support site](https://support.lianatech.com/hc/en-us/articles/5339910408989-LianaMailer-REST-API).
 
 == Changelog ==
+
+= 1.0.65 2026-02-27 =
+* **Fix:** Cut most of unnecessary LianaMailer REST API calls
 
 = 1.0.63 2025-05-30 =
 * **Changed:** Send subscriber's IP to LianaMailer

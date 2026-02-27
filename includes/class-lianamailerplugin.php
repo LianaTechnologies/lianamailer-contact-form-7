@@ -95,7 +95,12 @@ class LianaMailerPlugin {
 			return;
 		}
 
-		self::get_liana_mailer_site_data( $cf7_instance );
+		$cached_site_data = get_transient( 'lianamailer_cf7_site_data' );
+		if ( $cached_site_data ) {
+			self::$site_data = $cached_site_data;
+		} else {
+			self::get_liana_mailer_site_data( $cf7_instance );
+		}
 		if ( empty( self::$site_data ) ) {
 			return;
 		}
@@ -616,12 +621,17 @@ class LianaMailerPlugin {
 	 * @param object $cf7_instance CF7 instance.
 	 */
 	private static function get_liana_mailer_site_data( $cf7_instance = null ) {
-
 		if ( ! empty( self::$site_data ) ) {
 			return;
 		}
 
 		if ( is_null( $cf7_instance ) ) {
+			return;
+		}
+
+		$cached_site_data = get_transient( 'lianamailer_cf7_site_data' );
+		if ( $cached_site_data ) {
+			self::$site_data = $cached_site_data;
 			return;
 		}
 
@@ -664,6 +674,7 @@ class LianaMailerPlugin {
 				$site_data['lists']      = $site['lists'];
 				$site_data['consents']   = $site_consents;
 				self::$site_data         = $site_data;
+				set_transient( 'lianamailer_cf7_site_data', $site_data, DAY_IN_SECONDS );
 			}
 		}
 	}
@@ -674,6 +685,10 @@ class LianaMailerPlugin {
 	 * @param object $cf7_instance CF7 instance.
 	 */
 	public function add_liana_mailer_inputs_to_form( $cf7_instance ) {
+		// Recognize when the schema request is done and don't execute the code block in that instance.
+		if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), '/feedback/schema' ) !== false ) {
+			return;
+		}
 
 		$is_plugin_enabled = (bool) get_post_meta( $cf7_instance->id(), 'lianamailer_plugin_enabled', true );
 		// Works only in public form and check if plugin is enablen on current form.
@@ -774,7 +789,10 @@ class LianaMailerPlugin {
 		}
 		// Site.
 		if ( isset( $_POST['lianamailer_plugin_account_sites'] ) ) {
-			update_post_meta( $post_id, 'lianamailer_plugin_account_sites', sanitize_text_field( wp_unslash( $_POST['lianamailer_plugin_account_sites'] ) ) );
+			$site = sanitize_text_field( wp_unslash( $_POST['lianamailer_plugin_account_sites'] ) );
+			// If site is changed, bust the cache for site data.
+			delete_transient( 'lianamailer_cf7_site_data' );
+			update_post_meta( $post_id, 'lianamailer_plugin_account_sites', $site );
 		}
 		// Mailing list.
 		if ( isset( $_POST['lianamailer_plugin_mailing_lists'] ) ) {
@@ -782,6 +800,7 @@ class LianaMailerPlugin {
 		}
 		// Consent.
 		if ( isset( $_POST['lianamailer_plugin_site_consents'] ) ) {
+			delete_transient( 'lianamailer_cf7_site_data' );
 			update_post_meta( $post_id, 'lianamailer_plugin_site_consents', intval( $_POST['lianamailer_plugin_site_consents'] ) );
 		}
 	}
